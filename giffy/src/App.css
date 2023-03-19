@@ -18,3 +18,8 @@ a {
   color: #09F;
   font-size: 32px;
 }
+
+h1 a {
+  text-decoration: none;
+  color: white;
+}
