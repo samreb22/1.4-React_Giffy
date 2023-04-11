@@ -10,7 +10,7 @@ function GifForm() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    window.location.href = `/gif/${gif}`;
+    window.location.href = `/search/${gif}`;
   };
 
   return (
