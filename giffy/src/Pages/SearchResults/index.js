@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import ListOfGifs from "../../components/ListOfGifs/ListOfGifs";
 import getGifs from "../../services/getGifs";
+import { MoonLoader } from "react-spinners";
 
 export default function SearchResults({ params }) {
   const { keyword } = params;
@@ -19,11 +20,13 @@ export default function SearchResults({ params }) {
     [keyword]
   );
 
-  if (loading) return <i>Cargando resultados ...</i>;
-
   return (
     <>
-      <ListOfGifs gifs={gifs}></ListOfGifs>
+      {loading ? (
+        <MoonLoader color="#367bd6"></MoonLoader>
+      ) : (
+        <ListOfGifs gifs={gifs}></ListOfGifs>
+      )}
     </>
   );
 }

@@ -1,27 +1,36 @@
 import React, { useState } from "react";
-import './GifForm.css'
+import { useLocation } from "wouter";
+import "./GifForm.css";
 
-function GifForm() {
-  const [gif, setGif] = useState("");
+export default function GifForm() {
+  const [keyword, setKeyword] = useState("");
+  const [path, pushLocation] = useLocation();
 
-  const handleInputChange = (event) => {
-    setGif(event.target.value);
+  console.log(path);
+
+  const handleSubmit = (evt) => {
+    evt.preventDefault();
+    // Navegar a otra ruta
+    pushLocation(`/search/${keyword}`);
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    window.location.href = `/search/${gif}`;
+  const handleChange = (evt) => {
+    setKeyword(evt.target.value);
   };
 
   return (
     <form onSubmit={handleSubmit}>
       <label>
-        Buscar GIFs:
-        <input type="text" placeholder="Introduce texto..." value={gif} onChange={handleInputChange} />
+        Search GIFs:
+        <input
+          placeholder="Search a gif here.."
+          onChange={handleChange}
+          type="text"
+          required
+          value={keyword}
+        />
       </label>
-      <button type="submit">Buscar</button>
+      <button type="submit">Search</button>
     </form>
   );
 }
-
-export default GifForm;
