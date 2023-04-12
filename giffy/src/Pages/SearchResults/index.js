@@ -1,24 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import ListOfGifs from "../../components/ListOfGifs/ListOfGifs";
-import getGifs from "../../services/getGifs";
 import { MoonLoader } from "react-spinners";
+import { useGifs } from "../../hooks/useGifs";
 
 export default function SearchResults({ params }) {
   const { keyword } = params;
-  const [gifs, setGifs] = useState([]);
-  const [loading, setLoading] = useState(false);
-
-  useEffect(
-    function () {
-      setLoading(true);
-      // Utilizo la función "getGifs()" que he importado para realizar las llamadas a la API
-      getGifs({ keyword }).then((gifs) => {
-        setGifs(gifs);
-        setLoading(false);
-      });
-    },
-    [keyword]
-  );
+  // Extraemos los valores de loading y gifs llamando al custom hook
+  const { loading, gifs } = useGifs({ keyword });
 
   return (
     <>
