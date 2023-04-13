@@ -9,7 +9,7 @@ export function useGifs({ keyword } = { keyword: null }) {
     function () {
       setLoading(true);
       // Recuperamos la keyword del localStorage
-      const keywordToUse = keyword || localStorage.getItem("lastKeyword");
+      const keywordToUse = keyword || localStorage.getItem("lastKeyword") || "random";
       
       // Utilizo la función "getGifs()" que he importado para realizar las llamadas a la API
       getGifs({ keyword: keywordToUse }).then((gifs) => {
