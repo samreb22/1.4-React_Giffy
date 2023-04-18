@@ -6,6 +6,7 @@ import Home from "./Pages/Home";
 import SearchResults from "./Pages/SearchResults/index.js";
 import StaticContext from "./context/StaticContext";
 import Detail from "./Pages/Detail/Detail";
+import { GifsContextProvider } from "./context/GifsContext";
 
 function App() {
   return (
@@ -17,9 +18,11 @@ function App() {
           <h1>
             <Link to="/">App Giffy</Link>
           </h1>
-          <Route component={Home} path="/" />
-          <Route component={SearchResults} path="/search/:keyword" />
-          <Route component={Detail} path="/gif/:id" />
+          <GifsContextProvider>
+            <Route component={Home} path="/" />
+            <Route component={SearchResults} path="/search/:keyword" />
+            <Route component={Detail} path="/gif/:id" />
+          </GifsContextProvider>
         </section>
       </div>
     </StaticContext.Provider>

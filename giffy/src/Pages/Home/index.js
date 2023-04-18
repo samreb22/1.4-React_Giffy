@@ -4,7 +4,7 @@ import "../../components/GifForm/GifForm.css";
 import { useGifs } from "../../hooks/useGifs";
 import ListOfGifs from "../../components/ListOfGifs/ListOfGifs";
 
-const POPULAR_GIFS = ["Matrix", "Venezuela", "Chile", "Colombia", "Ecuador"];
+const POPULAR_GIFS = ["Matrix", "F1", "Futbol", "Marvel", "John Wick"];
 
 export default function Home() {
   const [keyword, setKeyword] = useState("");
